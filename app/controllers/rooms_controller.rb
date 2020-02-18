@@ -1,4 +1,4 @@
-class RoomsController < ApplicationController
+  class RoomsController < ApplicationController
   def index
     @rooms = Room.all
   end
@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to rooms_path
     else
+      @errors = @room.errors.full_messages
       render :new
     end
   end
