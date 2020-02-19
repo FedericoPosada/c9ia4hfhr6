@@ -17,6 +17,13 @@
     end
   end
 
+  def destroy
+    @room = Room.find(params[:id])
+    if @room.destroy
+      redirect_to rooms_path
+    end
+  end
+
   protected
     def room_params
       params.require(:room).permit(:title, :description, :beds, :guests, :image_url, :price_per_night)
