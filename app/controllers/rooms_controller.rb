@@ -17,6 +17,20 @@
     end
   end
 
+  def edit
+    @room=Room.find(params[:id])
+  end
+
+  def update    
+    @room = Room.find(params[:id])
+    if @room.update(room_params)
+      redirect_to rooms_path
+    else
+      @errors=@room.errors.full_messages
+      render :edit
+    end
+  end
+
   def destroy
     @room = Room.find(params[:id])
     if @room.destroy
